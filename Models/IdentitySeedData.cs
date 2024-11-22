@@ -32,6 +32,19 @@ namespace IdentityApp.Models
 
                 await userManager.CreateAsync(user,adminPassword);
             }
+
+            var roleManager = app.ApplicationServices.CreateScope().ServiceProvider.GetRequiredService<RoleManager<AppRole>>();
+
+            var role = await roleManager.FindByNameAsync("admin");
+
+            if (role == null)
+            {
+                role = new AppRole{
+                    Name = "admin"
+                };
+
+                await roleManager.CreateAsync(role);
+            }
         }
     }
 }
