@@ -27,7 +27,8 @@ namespace IdentityApp.Models
                     FullName = "Tolga Topçu",
                     UserName = adminUser,
                     Email = "admin@tolgatopcu.com",
-                    PhoneNumber = "444444444"
+                    PhoneNumber = "444444444",
+                    EmailConfirmed=true
                 };
 
                 await userManager.CreateAsync(user,adminPassword);
